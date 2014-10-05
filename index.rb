@@ -1,3 +1,4 @@
+puts "\r"
 puts "==========="
 puts "Problem 1"
 puts "==========="
@@ -6,23 +7,10 @@ puts "\r"
 data = []
 id = 0
 
-# 100.times do |user_id|
-# 	data = {
-# 		id: user_id,
-# 		email: "user_#{user_id}@gmail.com",
-# 		username: "user_#{user_id}",
-# 		age: 22
-# 	}
-# 	puts data
-# 	user_id += 1
-# 	data[:age] = 33
-# end
-
-
 100.times do
-	data.push({
+	data.push({ 
 		user: {
-			id: id += 1,
+			id: id,
 			email: "user_#{id}@gmail.com",
 			username: "user_#{id}",
 			age: rand(18..75)
@@ -32,6 +20,7 @@ id = 0
 			"This is my second tweet!"
 		]
 	})
+	id += 1
 end
 
 puts data
@@ -43,19 +32,41 @@ puts "user_2's tweets"
 puts "================"
 puts "\r"
 
-data[1][:tweets].each {|tweet| puts "tweet: " + tweet}
-puts "\r"
+data[2][:tweets].each {|tweet| puts "tweet: " + tweet}
 
+puts "\r"
 puts "==========="
 puts "Problem 3"
 puts "==========="
 puts "\r"
 
-puts data.reverse
+puts data.reverse!
 
+puts "\r"
 puts "==========="
 puts "Problem 4"
 puts "==========="
 puts "\r"
 
-# puts "user_2 is at #{index} in the data array"
+user_found = data.find_index { |a| a[:user][:id] == 2 }
+
+puts "user_2 is at index #{user_found} in the data array"
+
+puts "\r"
+puts "==========="
+puts "Problem 5"
+puts "==========="
+puts "\r"
+
+puts "SEARCH RESULTS"
+puts "username        age"
+puts "========        ==="
+
+# data.select { |user| user[:user][:age] == 22 } .each { |id| puts id[:user][:id]} .each { |age| puts age[:user][:age]}
+whitespace = "        "
+
+data.select { |user| user[:user][:age] < 25 && user[:user][:age] > 18 } .each do |u|
+	puts "user_#{u[:user][:id]} #{whitespace} #{u[:user][:age]}"
+end
+
+puts "\r"
