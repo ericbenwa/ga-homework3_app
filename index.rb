@@ -62,7 +62,6 @@ puts "SEARCH RESULTS"
 puts "username        age"
 puts "========        ==="
 
-# data.select { |user| user[:user][:age] == 22 } .each { |id| puts id[:user][:id]} .each { |age| puts age[:user][:age]}
 whitespace = "        "
 
 data.select { |user| user[:user][:age] < 25 && user[:user][:age] > 18 } .each do |u|
