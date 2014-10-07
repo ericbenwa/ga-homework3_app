@@ -5,9 +5,8 @@ puts "==========="
 puts "\r"
 
 data = []
-id = 0
 
-100.times do
+100.times do |id|
 	data.push({ 
 		user: {
 			id: id,
@@ -64,7 +63,7 @@ puts "========        ==="
 
 whitespace = "        "
 
-data.select { |user| user[:user][:age] < 25 && user[:user][:age] > 18 } .each do |u|
+data.select { |user| (18..25) === user[:user][:age] }.each do |u|
 	puts "user_#{u[:user][:id]} #{whitespace} #{u[:user][:age]}"
 end
 
